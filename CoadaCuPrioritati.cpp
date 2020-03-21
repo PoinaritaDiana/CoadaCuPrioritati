@@ -5,6 +5,10 @@ using namespace std;
 
 int main() {
 	
+	/* Am considerat ca daca valorea atribuita prioritatii este mai mare, atunci elementul respectiv are prioritate mai mare in coada
+	 * De exemplu, pentru elementele de tipul (valoare, prioritate), PQ: start-> (2,5),(4,3),(2,1), unde (2,5) este elementul cu prioritatea cea mai mare
+	 */
+
 	Pqueue cp1;
 	cin >> cp1;
 	cout << "Coada 1: " << cp1 << endl;
@@ -16,7 +20,7 @@ int main() {
 	Pqueue cp3;
 	cout << "Coada 3: " << cp3 << endl;
 
-	/*cp3.eliminare();  // Exceptie : "Coada este goala"*/
+	// cp3.eliminare();  // Exceptie : "Coada este goala"
 
 	Pqueue cp4(4, 6);
 	cout << "Coada 4: " << cp4 << endl;
