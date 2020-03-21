@@ -296,6 +296,7 @@ Pqueue& Pqueue::operator = (Pqueue& cp)
     this->~Pqueue();
     this->size = cp.size;
     nod* p = cp.start;
+    this->start = p;
     while (p != NULL) {
         this->adaugare(p->valoare, p->prioritate);
         p = p->next;
