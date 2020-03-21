@@ -294,6 +294,7 @@ ostream& operator << (ostream& cout, Pqueue& cp) {
         p = cp.getNext(nr);
         nr++;
     }
+    cout << endl;
     return cout;
 }
 
