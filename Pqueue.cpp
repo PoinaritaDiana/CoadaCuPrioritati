@@ -233,6 +233,17 @@ Pqueue& Pqueue::operator ++(int) {
     return *old;
 }
 
+/* Varianta de supraincarcare ++ : ++cp - Nu am stiut care se cere */
+Pqueue& Pqueue:: operator++(){
+    nod* p = this->start;
+    while(p!=NULL){
+        p->prioritate++;
+        p=p->next;
+    }
+    return *this;
+}
+
+
 /* Supraincarcarea operatorului -- care va scadea cu 1 prioritatile elementelor din coada (si elimina elementele cu proprietatea 0) cp-- */
 Pqueue& Pqueue::operator -- (int) {
     Pqueue* old = new Pqueue(*this);
@@ -258,6 +269,26 @@ Pqueue& Pqueue::operator -- (int) {
 
     return *old;
 }
+
+/* Varianta de supraincarcare -- : --cp - Nu am stiut care se cere */
+Pqueue& Pqueue:: operator--(){
+    int ok = 0; //ok devine 1 in momentul in care am gasit primul element care are prioritatea 0 dupa scadere
+    int nr = 0; //nr. de elemente parcurse pana la primul element care are prioritatea 0 dupa scadere
+    nod* p = this->start;
+    while(p!=NULL && ok==0){
+        nr++;
+        p->prioritate--;
+        if(p->prioritate==0 && ok==0)
+            ok=nr;
+        p=p->next;
+    }
+    if (ok != 0) // Daca sunt elemente de sters
+        while (ok <= this->size)
+            this->eliminare(ok);
+    return *this;
+}
+
+
 
 /* Supraincarcarea operatorului = */
 Pqueue& Pqueue::operator = (Pqueue& cp)

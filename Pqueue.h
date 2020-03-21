@@ -34,8 +34,12 @@ public:
     int valPriorMin(); //Obtinerea valorii prioritatii minime din coada
 
     Pqueue& operator +(Pqueue&);  //Supraincarcarea operatorului + pentru fuziunea a doua cozi
+
     Pqueue& operator ++(int);  //Supraincarcarea operatorului ++ care va creste cu 1 prioritatile elementelor din coada
+    Pqueue& operator ++();
+
     Pqueue& operator --(int); //Supraincarcarea operatorului -- care va scadea cu 1 prioritatile elementelor din coada
+    Pqueue& operator --(); 
 
     Pqueue& operator = (Pqueue&);  //Supraincarcarea operatorului =
 
