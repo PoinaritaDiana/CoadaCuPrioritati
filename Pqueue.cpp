@@ -1,7 +1,23 @@
 #include "Pqueue.h"
 #include "nod.h"
 #include <iostream>
+#include <exception>
 using namespace std;
+
+/* Pentru exceptii */
+class PQEmpty : public exception{
+    const char* what() const throw ()
+    {
+        return "Coada este goala.";
+    }
+};
+class PQPoz : public exception{
+    const char* what() const throw ()
+    {
+        return "Valoarea introdusa se afla in afara intervalului.";
+    }
+};
+
 
 /* Construtor fara parametri */
 Pqueue::Pqueue() {
@@ -110,10 +126,10 @@ void Pqueue::adaugare(int val, int prior) {
 /* Eliminarea elementelor din coada (de pe o anumita pozitie - incepand indexarea de la 1) */
 void Pqueue::eliminare(int poz) {
     if (this->size == 0)
-        cout << "Queue Underflow" << endl;
+        throw PQEmpty();
     else {
         if (poz < 1 || poz > this->size)
-            cout << "Pozitia nu se afla in interval" << endl;
+            throw PQPoz();
         else {
             nod* p = start;
             if (poz == 1) {  //Daca poz=1, se sterge primul element
@@ -144,7 +160,7 @@ int Pqueue::nrElem() {
 /* Obtinerea elementului maxim din coada (ca valoare) */
 int Pqueue::elemValMax() {
     if (start == NULL)
-        cout << "Queue Underflow" << endl;
+        throw PQEmpty();
     else {
         int valmaxima = start->valoare;
         nod* p = start->next;
@@ -161,7 +177,7 @@ int Pqueue::elemValMax() {
 /* Obtinerea valorii prioritatii maxime din coada */
 int Pqueue::valPriorMax() {
     if (start == NULL)
-        cout << "Queue Underflow" << endl;
+        throw PQEmpty();
     else
         return this->start->prioritate; //Elementul cu cea mai mare prioritate este primul din coada: "start"
         // sau return this->start->valoare; (nu am inteles daca trebuie returnata valoarea sau prioritatea elementului cu cea mai mare prioritate)
@@ -170,7 +186,7 @@ int Pqueue::valPriorMax() {
 /* Obtinerea valorii prioritatii minime din coada */
 int Pqueue::valPriorMin() {
     if (start == NULL)
-        cout << "Queue Underflow" << endl;
+        throw PQEmpty();
     else {
         nod* p = start;
         while (p->next != NULL)
