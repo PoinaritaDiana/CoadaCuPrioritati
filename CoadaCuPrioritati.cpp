@@ -65,6 +65,5 @@ int main() {
 	cout << cp4--;
 	cout << cp4;
 	
-	
 	return 0;
 }

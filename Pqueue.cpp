@@ -4,21 +4,6 @@
 #include <exception>
 using namespace std;
 
-/* Pentru exceptii */
-class PQEmpty : public exception{
-    const char* what() const throw ()
-    {
-        return "Coada este goala.";
-    }
-};
-class PQPoz : public exception{
-    const char* what() const throw ()
-    {
-        return "Valoarea introdusa se afla in afara intervalului.";
-    }
-};
-
-
 /* Construtor fara parametri */
 Pqueue::Pqueue() {
     this->start = NULL;
@@ -126,10 +111,10 @@ void Pqueue::adaugare(int val, int prior) {
 /* Eliminarea elementelor din coada (de pe o anumita pozitie - incepand indexarea de la 1) */
 void Pqueue::eliminare(int poz) {
     if (this->size == 0)
-        throw PQEmpty();
+        throw runtime_error("Coada este goala");
     else {
         if (poz < 1 || poz > this->size)
-            throw PQPoz();
+            throw out_of_range("Valoarea introdusa se afla in afara intervalului");
         else {
             nod* p = start;
             if (poz == 1) {  //Daca poz=1, se sterge primul element
@@ -160,7 +145,7 @@ int Pqueue::nrElem() {
 /* Obtinerea elementului maxim din coada (ca valoare) */
 int Pqueue::elemValMax() {
     if (start == NULL)
-        throw PQEmpty();
+        throw runtime_error("Coada este goala");
     else {
         int valmaxima = start->valoare;
         nod* p = start->next;
@@ -177,7 +162,7 @@ int Pqueue::elemValMax() {
 /* Obtinerea valorii prioritatii maxime din coada */
 int Pqueue::valPriorMax() {
     if (start == NULL)
-        throw PQEmpty();
+        throw runtime_error("Coada este goala");
     else
         return this->start->prioritate; //Elementul cu cea mai mare prioritate este primul din coada: "start"
         // sau return this->start->valoare; (nu am inteles daca trebuie returnata valoarea sau prioritatea elementului cu cea mai mare prioritate)
@@ -186,7 +171,7 @@ int Pqueue::valPriorMax() {
 /* Obtinerea valorii prioritatii minime din coada */
 int Pqueue::valPriorMin() {
     if (start == NULL)
-        throw PQEmpty();
+        throw runtime_error("Coada este goala");
     else {
         nod* p = start;
         while (p->next != NULL)
