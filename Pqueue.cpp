@@ -303,6 +303,7 @@ Pqueue& Pqueue::operator = (Pqueue& cp)
     while (p != NULL) {
         q->next= new nod(p->valoare, p->prioritate, NULL);
         p = p->next;
+        q = q->next;
     }
     return *this;
 }
