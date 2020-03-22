@@ -301,7 +301,7 @@ Pqueue& Pqueue::operator = (Pqueue& cp)
     nod* q = this->start;
     p = p->next;
     while (p != NULL) {
-        this->adaugare(p->valoare, p->prioritate);
+        q->next= new nod(p->valoare, p->prioritate, NULL);
         p = p->next;
     }
     return *this;
