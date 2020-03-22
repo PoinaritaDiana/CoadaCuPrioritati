@@ -9,7 +9,7 @@ int main() {
 	 * De exemplu, pentru elementele de tipul (valoare, prioritate), PQ: start-> (2,5),(4,3),(2,1), unde (2,5) este elementul cu prioritatea cea mai mare
 	 * Pozitia 1 inseamna primul element din coada (start/cel cu prioritatea cea mai mare)
 	 */
-
+	/*
 	Pqueue cp1;
 	cin >> cp1;
 	cout << cp1;
@@ -28,11 +28,11 @@ int main() {
 
 	Pqueue cp5(2, 5);
 	cout << cp5;
-
+	*/
 	/* cp1.eliminare(4);  // daca size < 4, exceptie: "Valoarea introdusa se afla in afara intervalului"
 	 cout << cp1;
 	 */
-
+	/*
 	cp1.adaugare(6, 3);
 	cout << cp1;
 	cout << cp1.elemValMax() << endl;
@@ -64,6 +64,20 @@ int main() {
 	cout << cp4;
 	cout << cp4--;
 	cout << cp4;
+	*/
+	Pqueue cp4;
+	cin >> cp4;
+	cout << cp4;
+
+	Pqueue cp5;
+	cp5 = cp4;
+	cout << cp5;
+	cout << cp4;
+
+	cp4.adaugare(2, 3);
+	cout << cp4;
+	cout << cp5;
+
 	
 	return 0;
 }
