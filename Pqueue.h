@@ -47,4 +47,6 @@ public:
     friend istream& operator >> (istream&, Pqueue&);
     friend ostream& operator << (ostream&, Pqueue&);
 
+    int operator [](int); //Supraincarcare operator [] => imi trebuie la assert
+
 };

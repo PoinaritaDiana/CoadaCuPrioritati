@@ -319,6 +319,16 @@ ostream& operator << (ostream& cout, Pqueue& cp) {
     return cout;
 }
 
+int Pqueue::operator [] (int i){
+    nod* p = this->start;
+    int poz = 0;
+    while (p != NULL) {
+        poz++;
+        if (poz == i) return p->valoare;
+        p = p->next;
+    }
+    return 0;
+}
 
 /* Functia care sterge toate elementele din coada incepand cu elementul dat pana la final
 
